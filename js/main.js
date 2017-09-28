@@ -1,14 +1,14 @@
- $(document).ready(function () {
-
-            $('body').ruler({
-    unit: 'mm',
-    tickMajor: 10,
-    tickMinor: 5,
-    tickMicro: 1,
-    showLabel: true,
-    arrowStyle:'arrow'
-});
-         });
+//  $(document).ready(function () {
+//
+//             $('body').ruler({
+//     unit: 'mm',
+//     tickMajor: 10,
+//     tickMinor: 5,
+//     tickMicro: 1,
+//     showLabel: true,
+//     arrowStyle:'arrow'
+// });
+//          });
 
 function getActualWidth()
 {
@@ -27,7 +27,7 @@ function getActualHeight()
                       document.documentElement.clientHeight ||
                       document.body.clientHeight ||
                       document.body.offsetHeight;
-    console.log(actualHeight) ;                 
+    console.log(actualHeight) ;
     return actualHeight;
 }
 
@@ -44,17 +44,33 @@ while (elt.lastChild) {
 
 function newmm() {
   //var svgstage = document.getElementById("svgstage");
-  empty("svgstage");
-  drawmmnode();
+  empty("s");
+  var text ="this is a test!";
+  drawmmnode(text);
   // document.getElementById("svgstage").innerHTML = "";
   //var w = xcanvas.innerWidth();
 
 }
+
+function drawmmnode(text){
+   var textSize = measure(text, "nodetext");
+   var x,y,h,w;
+   h=textSize.height + 2;
+   w=textSize.width + 2;
+   x=(getActualWidth() + w)/2;
+   y=(getActualHeight() + h)/2;
+   var rect = makeSVG('rect',{x: x, y: y, height: h, width: w, stroke: 'black', 'stroke-width': 2, fill: "rgba(124,240,10,0.5)"});
+   document.getElementById('s').appendChild(rect);
+
+  //  var circle= makeSVG('circle', {cx: x, cy: y, r:70, stroke: 'black', 'stroke-width': 2, fill: 'red'});
+  //  document.getElementById('s').appendChild(circle);
+};
 //  var t = document.getElementById("nodetext").value;
  // var sampleSVG = d3.select("body")
  //                 .append("svg:svg")
+
  //                 .attr("width", 100)
- //                 .attr("height", 100);    
+ //                 .attr("height", 100);
 
  //        sampleSVG.append("svg:circle")
  //                 .style("stroke", "gray")
@@ -68,25 +84,25 @@ function newmm() {
  //                 .on("mouseout", function() {
  //                      d3.select(this).style("fill", "white");}
  //                 );
- 
- 
+
+
 //  var titleSize = measure("Title of Diagram", "title");
 //  console.log(titleSize);
 
 // // create a dummy element, apply the appropriate classes,
 // // and then measure the element
 
-//  function measure(text, classname) {
-//     if(!text || text.length === 0) return {height: 0, width: 0};
-    
-//     var container = d3.select('body').append('svg').attr('class', classname);
-//     container.append('text').attr({x: -1000, y: -1000}).text(text);
-    
-//     var bbox = container.node().getBBox();
-//     container.remove();
-    
-//     return {height: bbox.height, width: bbox.width};
-// }
+ function measure(text, classname) {
+    if(!text || text.length === 0) return {height: 0, width: 0};
+
+    var container = d3.select('body').append('svg').attr('class', classname);
+    container.append('text').attr({x: -1000, y: -1000}).text(text);
+
+    var bbox = container.node().getBBox();
+    container.remove();
+
+    return {height: bbox.height, width: bbox.width};
+}
 
 
 
@@ -99,8 +115,8 @@ strHtml+=w + " " + h +"' ><\/svg>";
 c.style.width=w + "px";
 c.style.height=h + "px";
 c.innerHTML=strHtml;
-document.body.style.overflow = 'hidden';  // firefox, chrome
-document.body.scroll = "no";
+// document.body.style.overflow = 'hidden';  // firefox, chrome
+// document.body.scroll = "no";
  }
  function makeSVG(tag, attrs) {
             var el= document.createElementNS('http://www.w3.org/2000/svg', tag);

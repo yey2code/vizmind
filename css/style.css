@@ -1,22 +1,22 @@
 html {
-	
-	background-position: 18px 18px !important;	
-	
+
+	background-position: 18px 18px !important;
+
 	font-family: source sans pro, "Arial Narrow", "Helvetica Neue", Helvetica, Arial, Veranda, sans-serif;*/
-	
+
 	font-size: 16px;
 	line-height: 1.4;
-	
+
 	/*background: #fff url(img/il-grid-trans.png) top left repeat;
-	
-	font-weight: normal;	
+
+	font-weight: normal;
 	color: #222;*/
-	
+
 	background: #fff url(../img/ps-grid-trans.png) top left repeat;
-	font-weight: bold;	
+	font-weight: bold;
 	color: #222;
 
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 }
 
@@ -75,4 +75,7 @@ width: 100%;*/
 	font-weight: 100;
   color: #101010;
 	letter-spacing: -.06em
+}
+.nodetext{
+	font-size: 16px;
 }
